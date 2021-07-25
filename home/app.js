@@ -46,10 +46,12 @@
           const data = JSON.parse(this.responseText);
 
           if (data.response && data.response.docs && data.response.docs.length > 1) {
+            responseContainer.scrollIntoView({behavior: "smooth"});
             htmlContent = "<ul>" + data.response.docs.map(article => `<li class="article">
                     <h2><a href="${article.web_url}">${article.headline.main}</a></h2>
                     <p>${article.snippet}</p>
                 </li>`).join('') + "</ul>"
+                //responseContainer.scrollIntoView({behavior: "smooth"});
           } else {
             htmlContent = `<div class="error-no-article">No articles available</dive>`
           }
